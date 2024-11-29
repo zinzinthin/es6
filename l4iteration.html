@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iteration</title>
+</head>
+
+<body>
+
+    <script>
+        const posts = [
+            {
+                id: 1,
+                title: "New Post One"
+            },
+            {
+                id: 2,
+                title: "New Post Two"
+            },
+            {
+                id: 3,
+                title: "New Post Three"
+            },
+
+        ]
+
+        const comment = { post_id: 1, message: "nice post one", user_id: 10 };
+
+        function postcomment(posts,comment){
+            return posts.find((post)=>{
+                return post.id === comment.post_id;
+            });
+        }
+
+        console.log(postcomment(posts,comment));
+
+        document.write('<h3>Reduce Method</h3>');
+
+        //mainarrays.reduce(function(pre value,curr value,curr index,array){},initinal value or addition value)
+        const amounts = [10,20,30];
+
+        // const result = amounts.reduce((total,curr)=>{
+        //     total += curr;
+        //     return total;
+        // });
+
+        // const result = amounts.reduce((total,curr)=>{
+        //     total += curr;
+        //     return total;
+        // },0);
+
+        // const result = amounts.reduce((total,curr)=>{
+        //     total += curr;
+        //     return total;
+        // },10);
+
+        // console.log(result); //70
+
+        const sumresult = amounts.reduce((total,curr)=>{
+           return total+=curr; //number
+           
+        },0).toFixed(2); //string
+
+         console.log(sumresult);
+
+        const numbers = [10,20,34,45,3,69];
+
+        const getmax = numbers.reduce((pre,curr)=>{
+            if(curr > pre){
+                return curr;
+            }
+
+            return pre;
+        });
+
+        // console.log(getmax);
+
+        // return  pre curr
+        // 10      10  10
+        // 20       10  20
+
+        const getmin = numbers.reduce((pre,curr)=>{
+            if(curr < pre){
+                return curr;
+            }
+
+            return pre;
+        });
+
+        // console.log(getmin);
+
+        //=================================================== some() vs every() return boolean
+
+        const boys = ["aung aung","kyaw Kyaw","zin aung","moe aung"];
+        const checklength = boys.every(boy=>{
+            return boy.length === 9;
+        });
+
+        // console.log(checklength);
+
+        const letter = boys.every(boy => boy[0] == 'a');
+        // console.log(letter);
+
+        const lstletter = boys.every(boy=>boy[boy.length-1] === 'g');
+        // console.log(lstletter); //false
+
+        const someletter = boys.some(boy=>boy[boy.length-1] === 'g');
+        // console.log(someletter); //true
+
+
+
+    </script>
+
+
+</body>
+
+</html>
