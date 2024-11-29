@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <title>Arrow Function</title>
+</head>
+<body>
+    <script>
+        // => template literals
+        let num1 = 100;
+        let num2 = 200;
+        //console.log(`${num1+num2}`); //300
+       // console.log(`${num1 < num2 ? "Yes" : "No"}`);
+
+        // => function
+        let getfullname = function(){
+            let firstname = "Aung";
+            let lastname = "Tun Tun";
+
+            return `${firstname} ${lastname}`;
+            
+
+        }
+
+        //console.log(getfullname());
+
+        let firstname = "Ma Ma";
+        let lastname = "Mya";
+
+        let getnickname = (fstname,lstname) => fstname + " " + lastname;
+            getnickname = (fstname,lstname) => `${firstname} ${lastname}`;
+            getnickname = (fstname,lstname) => `${fstname} ${lstname}`;
+
+        console.log(getnickname(firstname,lastname));
+    </script>
+</body>
+</html>
