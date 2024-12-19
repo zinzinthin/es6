@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let male = "Aung Aung";
+        let female = "Su Su";
+        console.log(female,male); 
+        
+        //-----------------------------------------Array Destructure
+        const [person1,person2] = [female,male];
+        console.log(person1);
+        console.log(person2);
+
+        const mynumbers = [100,200,300];
+        console.log(mynumbers[1]);
+        console.log(mynumbers[2]);
+
+        const [val1,val2,val3] = mynumbers;
+        console.log(val1);
+        console.log(val2);
+
+        //-----------------------------------------Swipping Variable
+        [male,female] = [female,male];
+        console.log(female,male);
+
+
+        // ----------------------------------------skipping Elements
+        const numbers = [1,2,5,6,6,9];
+        const [num1,num6] = numbers;
+
+        console.log(num1);
+        // console.error(num2);
+        console.log(num6); //2
+        const [num3,,,,,num9,num10] = numbers;
+        console.log(num9); 
+        console.log(num10);//undefined
+
+        // ---------------------------------------- Default Value 
+        const arrnumbers = [100];
+
+        let [a=1,b=200] = arrnumbers;
+        console.log(a); //100
+        console.log(b);
+
+        //------------------------------------------Nested Destructuring
+        const yournums = [10,[3,5,6,6],23];
+        const [first,second,third] = yournums;
+
+        console.log(first);//10
+        console.log(second,second[2]);
+
+        const [n1,[n2,n3,n4],n5] = yournums;
+        console.log(n2);
+
+        //------------------------------------------Array Entries
+        const colors = ['red','green','blue','white','black'];
+        console.log(colors[1]);
+        for(const color of colors){
+            console.log(color);
+        }
+
+        const arrs = colors.entries();
+        console.log(arrs); //Array Iterator { constructor: Iterator() }
+
+        // console.log(arrs.next()); //Object{value:(2)[...], done:false}
+        // console.log(arrs.next().value); //Array [ 1, "green" ]
+        // console.log(arrs.next().done); //false
+        // console.log(arrs.next().value[1]); //white
+        // console.log(arrs.next());
+        // console.log(arrs.next()); //undefined
+        // console.log(arrs.next);
+
+        // for(const color of arrs){
+        //     // console.log(color);
+        //     console.log(color[0],color[1]);
+        // }
+
+        for(const [idx,color] of arrs){
+            console.log(idx,color);
+        }
+    </script>
+</body>
+</html>
