@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest Parameters</title>
+</head>
+<body>
+    <script>
+        //----------------------------------------Rest Parameter (...)
+        //Note : can't set first and between
+        function city(val){
+            return val;
+        }
+
+        console.log(city()); //undefined
+        console.log(city('Yangon')); //Yangon
+        console.log(city('Yangon','Mandalay','Bago'));//Yangon
+
+        function allcity(...val){
+            return val;
+        }
+        console.log(allcity()); //[]
+        console.log(allcity('Yangon')); //['Yangon']
+        console.log(allcity('Yangon','Mandalay','Bago'));//['Yangon','Mandalay','Bago']
+
+        function place(location,...vals){
+            return vals;
+        }
+
+        console.log(place()); //[]
+        console.log(place('Chaungtar'));//[]
+        console.log(place('Chaungtar','Ngapali','Ngwesaung'));//[ "Ngapali", "Ngwesaung" ]
+    
+        function sumresult(...nums){    
+            // let total = 0;
+            // for(const num of nums){
+            //     total += num;
+            // }
+            // return total;
+
+           const total = nums.reduce((total,curr) => total+curr,0);
+           return total;
+
+        }
+
+        console.log(sumresult('3',5,3,66,'33'));//03536633
+        console.log(sumresult(3,5,3,66,'33'));//7733
+        console.log(sumresult(3,6,3,6)); //18
+        console.log(sumresult([3,6,3,6])); //03,6,3,6
+
+    </script>
+</body>
+</html>
