@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Params and Destructuring</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const carobj = {
+            brand : "Toyota",
+            model : "Crown",
+            engine : "Petrol",
+            gearbox : "auto",
+        }
+
+        function car(brand,model,engin,gearbox,price){
+            console.log(brand,model,engin,gearbox,price);
+        }
+
+        // taxi(carobj); //Object { brand: "Toyota", model: "Crown", engine: "Petrol", gearbox: "auto" }undefined undefined undefined undefined
+
+        //-------------------------------------------------------------------------object destructuring--------------
+        //destructing para name must same object property name
+        //use {}
+        
+        const {brand,model,engin,gearbox,price} = carobj;
+        // taxi({brand,model,engin,gearbox,price});
+
+        function taxi( {brand,model,engin,gearbox,price}){
+            console.log(brand,model,engin,gearbox,price); 
+        }
+
+        // taxi(carobj);
+
+        //----------------------------------------------------------------------------------------------
+        
+        function taxi1({brand = "BMW",model = "X9",engin="EV",gearbox = "automatic",price="$100,000"}){
+            console.log(brand,model,engin,gearbox,price);
+        }
+        // car(); //undefined undefined ....
+        // taxi(); //Uncaught TypeError: (destructured parameter) is undefined
+
+        // taxi1(carobj); //Toyota Crown EV auto $100,000
+
+        //-------------------------------------------------------------------------Array destructuring in parameter
+        //use []
+
+        const cararrs = ["Honda","Hondafit","Hybird","Auto"];
+
+        function taxi2( [brand,model,engin,gearbox,price]){
+            console.log(brand,model,engin,gearbox,price); 
+        }
+
+        taxi2(cararrs); //Honda Hondafit Hybird Auto undefined
+
+        const cars = ["Honda",,"","Auto"];
+        taxi2(cars); //Honda undefined <empty string> Auto undefined
+
+    </script>
+</body>
+</html>
