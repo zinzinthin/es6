@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set <Object></Object></title>
+</head>
+<body>
+    <script type="text/javascript">
+        //set object
+        const colors = ['red','green','blue','red','green'];
+        console.log(colors);
+        console.log(colors.length);
+
+        //Removing Duplicates From Array
+        const colorsets = new Set(colors);
+        console.log(colorsets);
+        console.log(colorsets.size);
+
+        console.log(typeof colors, typeof colorsets);
+
+        //set() to array, converting set to array
+        // const colorarrs = Array.from(colorsets);
+        const colorarrs = [...colorsets];
+
+        console.log(colorarrs);
+
+        const names = new Set();
+        names.add("aung aung");
+        console.log(names); //set []
+        
+        names.add("kyaw kyaw","naung naung");
+        console.log(names);//set["aung aung","kyaw kyaw"]
+
+        names.add("su su").add("aye aye");
+        console.log(names);
+
+        console.log(names[0]); //undefined
+
+        //use foreach in set array 
+        names.forEach(name=>{
+            console.log(name);
+        });
+
+        
+
+
+
+    
+    </script>
+</body>
+</html>
