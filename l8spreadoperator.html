@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread operator</title>
+</head>
+<body>
+    <script>
+        //------------------------------------------------------------------spread operator ...
+        // Note : Array to values
+        let val;
+        val = Math.max(11,3,5,7,9,11,13,15,17,19,-20,0);
+        console.log(val); //19
+
+        val = Math.min(11,3,5,7,9,11,13,15,17,19,-20,0);
+        console.log(val); //-20
+
+        val = [20,10,30,40,50];
+        console.log(Math.max(val)); //NaN
+        console.log(Math.min(val)); //NaN
+
+        console.log(val); //Array(5) [ 20, 10, 30, 40, 50 ]
+
+        console.log(...val); //20 10 30 40 50 :: array to parameter
+        console.log(Math.max(...val)); //50
+        console.log(Math.min(...val)); //10
+
+        function sumresult(num1,num2,num3){
+            return num1+num2+num3;
+        }
+
+        console.log(sumresult(1,3,5));//9
+        console.log(sumresult([2,5,6]));//2,5,6 undefined undefined
+
+        const numbers = [10,20,40];
+        console.log(sumresult(...numbers)); //70
+
+        //--------------------------------------------------------------------apply(null,Array)
+        console.log(sumresult.apply(null,numbers)); //70
+
+        console.log(Math.max.apply(null,val)); //50
+        console.log(Math.min.apply(null,val)); //10
+
+        function getName(name1,name2,name3){
+            console.log("name one is ", name1);
+            console.log("name two is ", name2);
+            console.log("name three is ", name3);
+        }
+
+        getName("Su Su","Yu Yu","Nu Nu");
+        getName(["Su Su","Yu Yu","Nu Nu"]);
+        getName(...["Su Su","Yu Yu","Nu Nu"]);
+        getName.apply(null,["Su Su","Yu Yu","Nu Nu"]);
+
+        //-----------------------------------------------------------------------Sprit
+        const color = "red";
+        console.log(color); 
+
+        console.log(...color); //r e d
+
+        getName(color); //red undefined undefined
+        getName(...color); // 'r' 'e' 'd'
+
+        console.log(color); //red
+        console.log([color]); //Array['red']
+
+        console.log(...[color]); //red
+
+        console.log([...color]); //Array['R','e','d']
+        console.log(color.split('')); ////Array['R','e','d']
+
+        console.log(...["Red"]); //Red
+        console.log([..."Red"]); // Array['R','e','d']
+
+        console.log(...["Red","Green","Blue"]); // Red Green Blue
+        console.log([..."Red","Green","Blue"]); //Array(5) [ "R", "e", "d", "Green", "Blue" ]
+        console.log([..."Red",..."Green",..."Blue"]);
+
+        console.log(...[124,44,657,53,75]);
+        console.log([..."335",43,44,"...666"]);
+        console.log([...[3353],...[4535],5,66,75,34]);
+        console.log([[..."343"],[..."64"],545,656,34]);
+
+        //--------------------------------------------------------------Spread in Array
+        const phones = ['apple','oppo','vivo'];
+        const cars = ['toyota','suzuki','mazda'];
+        const computers = ['mac','acer','hp'];
+
+        let myowns = [phones,cars,computers];
+        console.log(myowns);
+
+        myowns = [...phones,...cars,...computers];
+        console.log(myowns);
+
+        //--------------------------------------------------------------Spread in Object
+        const infos = {
+            name : "Honey Nay Oo",
+            gendr : "Female",
+            age : 25
+        };
+
+        const contacts = {
+        phone : "091354354",
+        city : "Yangon",
+        hascar : true,
+        };
+
+        const profiles = {
+            nickname : "Honey",
+            age:30
+        };
+
+        let bio = {infos,contacts,profiles};
+        console.log(bio); //Object { infos: {…}, contacts: {…}, profiles: {…} }
+
+        bio = {...contacts,...profiles};
+        console.log(bio); //Object { phone: "091354354", city: "Yangon", hascar: true, nickname: "Honey", age: 30 }
+
+        bio = {...contacts,...profiles,...infos};
+        console.log(bio);
+
+        bio = {...contacts,...infos,country : "Myanmar",}
+        console.log(bio);
+
+        bio = {...infos,..."yangon"};
+        console.log(bio); //bject { 0: "y", 1: "a", 2: "n", 3: "g", 4: "o", 5: "n", name: "Honey Nay Oo", gendr: "Female", age: 25 }
+        
+        const students = [..."hello",{name : "Yu Yu"}];
+        console.log(students);
+
+        //------------------------------------------------------------------------------ variable as object key and value
+
+        const persons = {
+            name : "Hla Nu Htun",
+            gender : "Female",
+            age : 22
+        };
+
+        const phone = "09123456789";
+        const country = "Indonesia";
+        const key1 = "nickname";
+        const key2 = "favcolor";
+
+        const customers = {
+            ...persons,
+            hascar : true,
+            tel : phone,
+            country : country,
+            [key1] : "Hla Nu",
+            [key2] : "Pink"
+        };
+
+        console.log(customers);
+
+
+        const keyassign = (obj,key,value)=>{
+            
+            const getobj1 = obj;
+            getobj1[key] = value;
+
+            console.log(getobj1);//Object { name: "Hla Nu Htun", gender: "Female", age: 22, hascar: true, tel: "09123456789", country: "Indonesia", nickname: "Hla Nu", favcolor: "Pink", job: "Developer" }
+
+            const getobj2 = {...obj};
+            getobj2[key] = value;
+
+            console.log(getobj2); //Object { name: "Hla Nu Htun", gender: "Female", age: 22, hascar: true, tel: "09123456789", country: "Indonesia", nickname: "Hla Nu", favcolor: "Pink", job: "Developer" }
+
+            const getobj3 = {
+                ...obj,
+                [key] : value,
+            }
+
+            console.log(getobj3); //Object { name: "Hla Nu Htun", gender: "Female", age: 22, hascar: true, tel: "09123456789", country: "Indonesia", nickname: "Hla Nu", favcolor: "Pink", job: "Developer" }
+
+        }
+
+        keyassign(customers,"job","Developer");
+
+    </script>
+</body>
+</html>
