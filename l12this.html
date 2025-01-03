@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this keyword</title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+        //----------------------------------------------------------------------this keyword within function-----------------------------------
+        
+        //this keyword (static scope, lexical scope)
+        console.log(this); //Window http://127.0.0.1:5500/l12this.html
+
+        //tranditional function / regular function
+        function morning(){
+            console.log("Good Moring");
+            console.log(this); //Window http://127.0.0.1:5500/l12this.html
+        }
+
+        morning();
+
+        //nameless function
+        const afternoon = function(){
+            console.log("Good Afternoon");
+            console.log(this);
+        }
+
+        afternoon(); //Good Afternoon //Window http://127.0.0.1:5500/l12this.html
+
+        //Fat Arrow Function / arrow function
+        const goodevening = () =>{
+            console.log("Good Evening");
+            console.log(this);
+        }
+
+        goodevening();
+
+        //-----------------------------------------------------------------------------this keyword within callback function-------
+
+        //callback function is a function that call within a function
+        // setTimeout(function(){
+        //     console.log("Good Night");
+        //     console.log(this);//Window http://127.0.0.1:5500/l12this.html
+        // },3000); //3000 is waiting time or delay
+
+        // setTimeout(()=>{
+        //     console.log("Good Night");
+        //     console.log(this);//Window http://127.0.0.1:5500/l12this.html
+        // },3000);
+
+        function outside(){
+            let outerval = "Outer Val";
+            function inside(){
+                console.log(outerval);
+                console.log(this);//Window http://127.0.0.1:5500/l12this.html
+                console.log(this.outerval); //undefined
+            }
+
+            const inner = ()=>{
+                console.log(outerval);
+                console.log(this);//Window http://127.0.0.1:5500/l12this.html
+                console.log(this.outerval); //undefined
+            }
+
+            // inside();
+            inner();
+        }
+
+        outside();
+
+        //--------------------------------------------------------------------------this keyword without object--------------
+
+        // Name Less Regular Function = this Work           NRW
+        // Name Less Arrow Function   = this Not Work       NAN
+
+        // Callback Regular Function  = this Not Work       CRN
+        // Callback Arrow Function    = this Work           CAW
+
+        const obj1 = {
+            name : "Kyaw Kyaw",
+            age : 30,
+            city : "Yangon",
+
+            myfun1 : function(){
+                console.log(this);
+            },
+
+            myfun2 : ()=>{
+                console.log(this);
+            }
+        }
+
+        obj1.myfun1(); //bject { name: "Kyaw Kyaw", age: 30, city: "Yangon", myfun1: myfun1(), myfun2: myfun2() }
+        obj1.myfun2(); //window
+
+        const obj3 = {
+            name : "Tun Tun",
+            city: "Mawlamyine",
+            job : "Engineer",
+            salary:500000,
+
+            getname:function(){
+                console.log(this)// NRW
+                const funone = function(){
+                    console.log(name); //empty
+                    console.log(this); //CRN
+                    console.log(this.name); //empty
+                }
+                funone();
+            },
+
+            getcity:function(){
+                console.log(this); //NRW
+                const funtwo = ()=>{
+                    console.log(this.city); 
+                    // console.log(this);//CAW
+                }
+
+                funtwo();
+            },
+
+            getjob:()=>{
+
+                console.log(this);//RAN
+                const funthree = function(){
+                    console.log(this); //CRN
+                }
+
+                funthree();
+            },
+            getsalary : ()=>{
+                console.log(this);//NAN
+                const funfour = ()=>{
+                    console.log(this); //Window
+                    console.log(this.salary); //undefined
+                    // console.log(salary); //error
+                }
+
+                funfour();
+            }
+        }
+
+        obj3.getname(); //CRN : window:....
+
+        obj3.getcity();
+
+        obj3.getjob();
+
+        obj3.getsalary();
+
+
+
+    </script>
+
+</body>
+
+</html>
