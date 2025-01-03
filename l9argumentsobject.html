@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arguments <Object></Object></title>
+</head>
+
+<body>
+    <script>
+        //------------------------------------------------------------------Arguments Object
+        // Note : argument object can't set in arrow function
+        function getname(first,last){
+            console.log(first,last);
+        }
+        getname('Hsu','Myat');
+
+        function getfullname(first,middle,last){
+            console.log(first,middle,last);
+            console.log(arguments);
+        }
+        getfullname('Hsu','Myat','Lin');
+
+        function getcountry(){
+            console.log(arguments);
+            console.log(arguments[0]);
+        }
+
+        getcountry(); //
+        getcountry("Hla","Hla");
+
+        //=> Error, argument object can't set in arrow function
+        // const getcity = ()=>{
+        //     console.log(arguments); //uncaught referenceError
+        // }
+
+        // getcity("Bago");
+
+        function getnumber() {
+
+            let result = 0;
+            // for (const val of arguments) {
+            //     result += val;
+            // }
+            for(let x =0; x < arguments.length;x++){
+                result += arguments[x];
+            }
+            return result;
+        }
+        console.log(getnumber(10,20,30,40,50)); //150
+        console.log(getnumber(...[10,20,30,40,50])); //150
+
+        const amounts = [10,20,30,40,50];
+        console.log(getnumber(...amounts));//150
+
+        const arrs = [10,20,30,40,50];
+        const totalvalue = arrs.reduce((total,current)=>total+=current);
+        console.log(totalvalue); //150
+
+        function sumreult(){
+            // return arguments;
+            // return arguments.reduce((total,current)=>total+=current); //Error  => TypeError: arguments.reduce is not a function
+
+            // return Array.from(arguments).reduce((total,current)=>total+=current);
+            
+            return [...arguments].reduce((total,current)=>total+=current); 
+        }
+
+        console.log(sumreult(10,20,30,40,50)); //150
+
+        function colorlists(){
+            const colors = Array.from(arguments);
+
+            return colors.map((color,index)=>{
+                return `${++index} is ${color} color.`;
+            });
+        }
+        console.log(colorlists("red","green","blue"));
+    </script>
+</body>
+
+</html>
