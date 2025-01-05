@@ -133,6 +133,7 @@
 
                 funthree();
             },
+
             getsalary : ()=>{
                 console.log(this);//NAN
                 const funfour = ()=>{
@@ -153,6 +154,67 @@
 
         obj3.getsalary();
 
+        //let and const are not added value to window global scope
+
+        const items = {
+            product : "iPhone 16",
+            price : 2000,
+            //NRW
+            info : function(){
+                return `${this.product} Price is base on ${this.price} USD.`;
+            },
+            //NAN
+            discount : ()=>{
+                return `${this.price} USD for ${this.product} ! Get 20% cash back!`;
+            },
+        }
+
+        console.log(items);
+        console.log(items.info); //Object { product: "iPhone 16", price: 2000, info: info(), discount: discount() }
+        console.log(items.discount()); //undefined USD for undefined ! Get 20% cash back!
+
+        const group = {
+            members : [
+                "aung aung","su su"
+            ],
+            groupname : "Frontend Designer",
+            //nan
+            groupmembers: ()=>{
+                console.log(`There are 2 members on this ${this.groupname} group`);
+            },
+            //nrw > caw
+            groupinfo:function(){
+                return this.members.map(member =>{
+                    console.log(`${member} is on ${this.groupname} group`);
+                } );
+            },
+        }
+
+        console.log(group);//Object { members: (2) […], groupname: "Frontend Designer", groupmembers: groupmembers()
+        group.groupmembers();//There are 2 members on this undefined group
+        group.groupinfo(); //aung aung is on Frontend Designer group su su is on Frontend Designer group
+
+        const inventory = [
+            {title : "Redbull",price : 5000},
+            {title : "Sponsor", price :1500}
+        ];
+        function createitem(inventory){
+            return {
+                inventory,
+                itemvalue:function(){
+                    return this.inventory.reduce((total,curr)=> {
+                        total += curr.price;
+                        return total;
+                    },0);
+                }
+            };
+        }
+
+        const getresult = createitem(inventory);
+        console.log(getresult);
+        console.log(getresult.itemvalue());
+
+       
 
 
     </script>
