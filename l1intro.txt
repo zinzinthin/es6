@@ -1,0 +1,35 @@
+JAVASCRIPT -> ECMASCRIPT -> ....
+
+Modern JAVASCRIPT
+
+ECMA (European Computer Manufactures Association)
+
+1997 - ES1
+1998 - ES2
+1999 - ES3
+2009 - ES5 (Core Programming Language)
+2015 - ES6 
+.
+.
+.
+2024 - ES14
+
+------------------------------------- Features in ES6
+
+1. variable declaration => let,const
+
+2. arrow functions , default variable
+
+3. template literals (``)
+
+4. class (prototype)
+
+5. modules (import/export)
+
+6. destructuring assignment
+
+7. promises (new Promises(), fetch, axios, $....)
+
+8. Map, Set
+
+9. Symbol
