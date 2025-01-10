@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Literal</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    //=> js object
+    let person1 = {
+        name : 'Aung Aung',
+        age : 20,
+        gender : 'male'
+    };
+
+    console.log(person1); //{ name: "Aung Aung", age: 20, gender: "male" }
+    console.log(person1.name); // Aung Aung
+    console.log(person1['name']); //Aung Aung
+
+    person1.city = "Yangon";
+    console.log(person1); //{ name: "Aung Aung", age: 20, gender: "male", city: "Yangon" }
+
+    let person2 = person1; 
+    console.log(person2); //{ name: "Aung Aung", age: 20, gender: "male", city: "Yangon" }
+    person2.age = 30; //update
+    person2.hobby = "sport"; //add
+    console.log(person2['hobby']); //sport
+
+    console.log(person1); //{ name: "Aung Aung", age: 20, gender: "male", city: "Yangon", hobby: "sport" }
+
+    let person3 = Object.freeze(person1);
+    console.log(person3);
+
+    person3.phone = "0912345678"; //added
+    person3.age = 40; //update
+    console.log(person3); //{ name: "Aung Aung", age: 30, gender: "male", city: "Yangon", hobby: "sport" }
+    console.log(person2); //{ name: "Aung Aung", age: 30, gender: "male", city: "Yangon", hobby: "sport" }
+    console.log(person1); //{ name: "Aung Aung", age: 30, gender: "male", city: "Yangon", hobby: "sport" }
+
+    const employees = {
+        name : "yu yu",
+        position : "Graphic Designer",
+        salary : 700000
+    };
+
+    console.log(employees.name);
+    console.log(employees.position);
+    console.log(employees.salary);
+
+    // => object destructuring
+
+    const {name,salary} = employees;
+    console.log(name);
+    console.log(salary);
+
+    const employers = {
+        fullname : "Thuzar Aung",
+        company : "ABC Co.,ltd",
+        address : "Yangon",
+        posts : {
+            officestaff:{
+                gender : "Female",
+                salary:600000
+            },
+            driver:{
+                gender:"Male",
+                salary:400000,
+            }
+        },
+        links:{
+            social : {
+                gmail : "hr@abc.com",
+                facebook : "https://facebook.com/abccompany",
+            }
+        }
+
+    }
+
+    const {fullname,address,posts,links} = employers;
+    console.log(posts['officestaff'].gender);
+    console.log(links['social']['facebook']);
+    console.log(posts.driver[salary]);
+    console.log(links.social.gmail);
+
+
+    
+
+
+
+</script>
+    
+</body>
+</html>
