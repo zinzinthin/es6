@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol</title>
+</head>
+
+<body>
+    <script>
+        const studentinfo = {}
+        studentinfo.name = "Yamone";
+        studentinfo.age = 25;
+        studentinfo["hobby"] = "Reading";
+        studentinfo["hobby"] = "Swimming";
+
+        console.log(studentinfo);//Object { name: "Yamone", age: 25, hobby: "Swimming" } //overwrite same key value //use symbol to avoid
+
+        const feature1 = "feature";
+        const feature2 = "feature";
+
+        const car = {
+            brand: "Toyota",
+            madeby: "Japan",
+            model: "Toyato Crown 2018",
+            [feature1]: "crusie control",
+            [feature2]: "air - conditioner",
+            state: "on",
+            speed: 100,
+            turnon: function () {
+                this.state = "on";
+            },
+            turnoff() {
+                this.state = "off";
+            },
+            accelerate() {
+                if (this.state == "on") {
+                    this.speed += 10;
+
+                }
+            }
+
+        }
+
+        console.log(car); //Object { brand: "Toyota", madeby: "Japan", model: "Toyato Crown 2018", feature: "air - conditioner", state: "off", speed: 100, turnon: turnon(), turnoff: turnoff(), accelerate: accelerate() }
+
+        car.accelerate();
+        console.log(car.speed);
+
+        //-----------------------------------------------------------------------------------Symbol
+        //unique & dynamic
+        const symbol1 = Symbol();
+        const symbol2 = Symbol();
+
+        console.log(symbol1 === symbol1); //true
+        console.log(symbol1 === symbol2); //false symbol are always unique
+
+        const mysymbol = Symbol();
+        const yoursymbol = Symbol("This is your symbol");
+
+        console.log(mysymbol); //Symbol()
+        console.log(typeof mysymbol); //symbol
+
+        console.log(yoursymbol);//Symbol("This is your symbol")
+        console.log(yoursymbol.toString());//Symbol(This is your symbol)
+
+        const action1 = Symbol("feature");
+        const action2 = Symbol("feature");
+
+        const ONSTATE = Symbol("on");
+        const OFFSTATE = Symbol("off");
+
+        const vehical = {
+            brand: "Toyota",
+            madeby: "Japan",
+            model: "Toyato Crown 2018",
+            [action1]: "crusie control",
+            [action2]: "air - conditioner",
+            state: ONSTATE,
+            speed: 100,
+            turnon: function () {
+                this.state = ONSTATE;
+            },
+            turnoff() {
+                this.state = OFFSTATE;
+            },
+            accelerate() {
+                if (this.state == ONSTATE) {
+                    this.speed += 10;
+                }
+            }
+
+        }
+
+        console.log(vehical); //Object { brand: "Toyota", madeby: "Japan", model: "Toyato Crown 2018", state: "on", speed: 100, turnon: turnon(), turnoff: turnoff(), accelerate: accelerate(), Symbol("feature"): "crusie control", Symbol("feature"): "air - conditioner" }
+        console.log(vehical.speed);//100
+        vehical.accelerate();
+        console.log(vehical.speed);//110
+
+    </script>
+</body>
+
+</html>
