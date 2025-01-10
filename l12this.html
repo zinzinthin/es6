@@ -43,15 +43,15 @@
         //-----------------------------------------------------------------------------this keyword within callback function-------
 
         //callback function is a function that call within a function
-        // setTimeout(function(){
-        //     console.log("Good Night");
-        //     console.log(this);//Window http://127.0.0.1:5500/l12this.html
-        // },3000); //3000 is waiting time or delay
+        setTimeout(function(){
+            console.log("Good Night");
+            console.log(this);//Window http://127.0.0.1:5500/l12this.html
+        },3000); //3000 is waiting time or delay
 
-        // setTimeout(()=>{
-        //     console.log("Good Night");
-        //     console.log(this);//Window http://127.0.0.1:5500/l12this.html
-        // },3000);
+        setTimeout(()=>{
+            console.log("Good Night");
+            console.log(this);//Window http://127.0.0.1:5500/l12this.html
+        },3000);
 
         function outside(){
             let outerval = "Outer Val";
