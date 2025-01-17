@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Method Chaining</title>
+</head>
+
+<body>
+    <script>
+        //-------------------------------------------method chaining
+        // return this keyword to be enabled chaining
+        class Gamer {
+
+            constructor(username) {
+                this.username = username;
+                this.points = 0;
+            }
+
+            login() {
+                console.log(`${this.username} jsut logged in`);
+                return this;
+            }
+
+            logout() {
+                console.log(`${this.username} just logged out`);
+                return this;
+            }
+
+            earnpoint() {
+                this.points += 10;
+                console.log(`${this.username} got ${this.points} gift points`);
+                return this;
+            }
+        }
+
+        const gameObj = new Gamer("Thura");
+
+        gameObj.login().earnpoint().logout();
+
+        class User {
+
+            constructor() {
+                this.info = {};
+            }
+
+            setname(name) {
+                this.info.name = name;
+                return this;
+            }
+
+            setage(age) {
+                this.info.age = age;
+                return this;
+            }
+
+            setcity(city) {
+                this.info.city = city;
+                return this;
+            }
+
+            getinfo() {
+                return this.info;
+            }
+        }
+
+        const getuserdata = new User()
+                            .setname("Aye")
+                            .setage(25)
+                            .setcity("Yangon")
+                            .getinfo();
+
+        console.log(getuserdata);
+
+
+
+    </script>
+</body>
+
+</html>
