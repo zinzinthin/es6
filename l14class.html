@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+</head>
+
+<body>
+    <h1>Primitive Type & Reference Type</h1>
+
+    <h3>Primitive Type</h3>
+    <ol>
+        <li>string</li>
+        <li>numbers</li>
+        <li>boolean</li>
+        <li>null</li>
+        <li>undefined</li>
+        <li>symbol</li>
+    </ol>
+
+    <h3>Reference Type</h3>
+    <ol>
+        <li>
+            all types of objects
+            <ul>
+                <li>object literals</li>
+                <li>arrays</li>
+                <li>functions</li>
+                <li>date</li>
+                <li>all other objects</li>
+            </ul>
+        </li>
+    </ol>
+
+    <script type="text/javascript">
+
+        //PascalCase -> should be used in Class name
+        //camelCase -> should be used in Object name
+        //snake_case -> should be used in sql
+        //getusername() -> function name
+        //username -> variable name
+
+        //--------------------------------------------------------------------------- primitive data type 
+        //takes difference memory references
+        let val1 = 100;
+        let val2 = val1;
+
+        console.log(`valq value is ${val1} , val2 value = ${val2}`);
+
+        val1 = 300;
+        console.log(`valq value is ${val1} , val2 value = ${val2}`);
+
+        //------------------------------------------------------- --------------------reference data type
+        //takes same memory reference
+
+        let obj1 = { name: "su su" };
+        let obj2 = obj1; //obj2 points to obj1 (same memory reference)
+
+        // obj1.name = "Yamon";
+        obj2.name = "Wouthmone";
+
+        console.log(obj1.name); //Wouthmone;
+        console.log(obj2.name); //Wouthmone;
+
+        //=> Object literals
+
+        const clientOne = {
+            //properties
+
+            username: "aung aung",
+            email: "aungaung@gmail.com",
+
+            //methods / member methods
+            login() {
+                console.log("You are logged in");
+            },
+            logout() {
+                console.log("You are logged out");
+            }
+        };
+
+        console.log(clientOne);
+        console.log(clientOne.username, clientOne.email);
+        clientOne.login();
+        clientOne.logout();
+
+        const clientTwo = {
+            //properties
+            username: "Kyaw Kyaw",
+            email: "kyawkyaw@gmail.com",
+
+            //methods / member methods
+            login: function () {
+                console.log("You are logged in");
+            },
+            logout: () => {
+                console.log("You are logged out");
+            }
+        }
+        console.log(clientTwo);
+        console.log(clientTwo.username, clientTwo.email);
+        clientTwo.login();
+        clientTwo.logout();
+
+        //---------------------------------------------------------------------------------Class
+        //class method properties default access is public 
+        //if method has parameters, must call it with parameters
+
+        //"new" keyword
+        // (i) create a new empty object {}
+        // (ii) binds the value of "this" to the new empty object
+        // (iii) call the constructor function to "build" the object
+
+        class User {
+
+            // Constructor Function
+            constructor(username, email) {
+                //properties
+                this.username = username;
+                this.email = email;
+            }
+
+            //instance method
+            login = () => {
+                console.log("you are logged in");
+            }
+
+            logout() {
+                console.log("you are logged out");
+            }
+        }
+
+        const userOne = new User("hnin hnin", "hninhnin@gmail.com");
+        const userTwo = new User("Su Su", "susu@gmail.com");
+
+        console.log(userOne.username, userOne.email);
+        console.log(userTwo.username, userTwo.email);
+
+        userOne.login();
+        userTwo.logout();
+
+        console.log(userTwo);
+
+
+        class Employee {
+
+            constructor(name) {
+                this.name = name;
+                this.codes = function () {
+                    return "PHP, Laravel, React";
+                }
+            }
+
+            salary = (amount, currency) => {
+                return `${amount} ${currency} per month`;
+            }
+
+            contact() {
+                return "No.10. Shwebo St, Mandalay";
+            }
+        }
+
+        const employeeObj = new Employee("Hsu Hsu");
+
+        console.log(employeeObj);
+        console.log(employeeObj.name);
+        console.log(employeeObj.codes());
+        console.log(employeeObj.salary(500, "usd"));
+        console.log(employeeObj.contact());
+
+        class Person {
+
+            constructor(firstname, lastname, city) {
+                this.firstname = firstname;
+                this.lastname = lastname;
+                this.hometown = city; //differenct variable name is ok, but should same
+            }
+
+            getfullname = (title) => {
+                return `${title}.${this.firstname} ${this.lastname}`;
+            }
+        }
+
+        const personObj = new Person("Aung", "Kyaw Kyaw", "Yangon");
+
+        console.log(personObj);
+        console.log(personObj.firstname, personObj.lastname);
+        console.log(personObj.hometown);
+        console.log(personObj.getfullname("Mr"));
+
+        const personObj2 = new Person("Nu Nu", "Aye", ["Bago", "Mandalay"]);
+
+        console.log(personObj2);
+        console.log(personObj2.hometown);
+        console.log(personObj2.hometown[0]);
+        console.log(personObj2["hometown"][0]);
+        console.log(personObj2["firstname"]);
+        // console.log(personObj2[getfullname]("Mr."));
+
+    </script>
+</body>
+
+</html>
