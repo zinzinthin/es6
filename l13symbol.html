@@ -98,6 +98,82 @@
         vehical.accelerate();
         console.log(vehical.speed);//110
 
+        for(const key in vehical){
+            console.log(key); //Node :: (Symbol keys are ignored)
+        }
+
+        console.log(vehical.brand); //Toyato
+        // console.log(vehical[madeby]); //error Uncaught ReferenceError : madeby is not defined
+        console.log(vehical.action1); //undefined
+        console.log(vehical[action1]); //crusie control
+
+        //=> Object functions
+        console.log(Object.keys(vehical)); // Node :: Symbol keys are ignored
+        console.log(Object.getOwnPropertyNames(vehical)); //Array(8) [ "brand", "madeby", "model", "state", "speed", "turnon", "turnoff", "accelerate" ]
+        
+        console.log(Object.getOwnPropertySymbols(vehical)); //Array [ Symbol("feature"), Symbol("feature") ]
+
+        //=> Symbol.iterator()
+
+        console.log(Symbol.iterator);
+        console.log(typeof Symbol.iterator); //symbol
+
+        const colors = ["red","green","blue"];
+
+        for(const value of colors){
+            console.log(value);
+        }
+
+        console.log(colors.entries()); //Array Iterator{}
+
+        const colorentries = colors.entries();
+
+        //console.log(colorentries.next()); 
+        console.log(colorentries.next().value[1]);
+
+        const coloriterators = colors[Symbol.iterator]();
+        console.log(coloriterators.next());
+
+        console.log(coloriterators.next().value);
+
+        let colorresults = coloriterators.next();
+        console.log(colorresults); //
+
+        while(!colorresults.done){
+            console.log(colorresults.value);
+            colorresults = coloriterators.next();
+        }
+
+        //=> Symbol.iterator with Set()
+
+        const names = new Set();
+
+        names.add("aung aung");
+        names.add("kyaw kyaw");
+        names.add("yu yu").add("nu nu").add("hal hal");
+        console.log(names);
+        console.log(names.size);
+        console.log(names[0]); //undefined
+
+        names.forEach(name => {
+            console.log(name);
+        });
+
+        console.log(names[Symbol.iterator]());
+        console.log(names[Symbol.iterator]().next());
+
+        const getnames = names[Symbol.iterator]();
+        console.log(getnames); //
+        console.log(getnames.next().value);
+
+        
+
+
+
+        
+
+
+
     </script>
 </body>
 
