@@ -42,6 +42,25 @@
             console.log(name);
         });
 
+        let students = new Set();
+        students.add("hla hla").add("nu nu").add("Yoon Yoon");
+        students.add("aung aung").add("kyaw kyaw").add("zaw zaw");
+        console.log(students);
+
+        console.log(students.size);
+
+        console.log(students.has("nu nu"));
+
+        students.delete("nu nu");
+
+        console.log(students);
+
+        students.clear();
+
+        console.log(students);
+
+        
+
         
 
 
