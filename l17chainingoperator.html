@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaining Operator</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //------------------------------------------------------Optional Chainging Operator (?.)
+        // to avoid runtime errors
+
+        //Syntax
+        // object?.proerty
+        // object?.[expression]
+        // object?.method()
+
+        let students = {
+            name : "Aye Aye",
+            address : {
+                city : "Yangon",
+                country : "Myanmar"
+            }
+        };
+
+        console.log(students.name ? students.name : 'no data') // Aye Aye
+        console.log(students?.name); //Aye Aye
+
+        // console.error(students.contact.phone ? students.contact.phone : "no data");
+        console.log(students?.contact?.phone); //undefined
+
+        console.log(students?.address?.city);
+
+        //--------------------------------------------------------------Accessing Array Elements
+
+        let staffs = [
+            {name : "Bo Bo"},
+            null,
+            {name : "Mi Mi"},
+            undefined,
+        ];
+
+        console.log(staffs[0]?.name); // Bo Bo
+        console.log(staffs[1]?.name); //undefined
+        console.log(staffs[2]?.name); //Mi Mi
+        console.log(staffs[3]?.name); //undefined
+        console.log(staffs[10]?.name); //undefined
+
+        //------------------------------------------------------------Access Calling Method
+
+        let employees = {
+            sayhi(){
+                return "Hello Boss!";
+            }
+        }
+
+        console.log(employees?.sayhi()); //Hello Boss!
+        // console.error(employees.saygoodbye());
+        console.log(employees?.saygoodbye?.()); //undefined
+
+        //------------------------------------------------------------Accessing Dynamic Properties
+
+        let users = {
+            setting  : {
+                theme : "dark mode"
+            }
+        };
+
+        let key = "theme";
+
+        console.log(users?.setting?.theme); //dark mode
+        console.log(users?.setting?.[key]); //dark mode
+
+        console.log(users?.config?.[key]); //undefined
+
+        //----------------------------------------------------------- OCO (?.) with Coalescing Operator (??)
+
+        let worker = {
+            nrc : "10/MaLaMa(N)12345",
+            passport : null,
+        };
+
+        let getnrc = worker?.nrc ?? "No NRC";
+        console.log(getnrc);
+
+        // let getpassport = worker.passport.type ?? "PV"; //error
+        let getpassport = worker?.passport?.type ?? "PV";
+        console.log(getpassport);
+
+
+    </script>
+</body>
+</html>
