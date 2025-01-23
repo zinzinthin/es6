@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coalesing Operator</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        // Coalescing Operator (??)  available in languages like PHP, Javascript, Python
+
+        // syntax (null, undefined)
+        // let value = val1 ?? val2;
+
+        //----------------------------------------------- Basic Usage
+        let fullname = "Hnin Hnin";
+        let nickname = null;
+
+        let result1 = fullname ?? nickname;
+        console.log(result1);
+
+        let result2 = nickname ?? fullname;
+        console.log(result2);
+
+        // Undefined Usage
+
+        let age; //undefined
+        let currentage = 20;
+
+        let result3 = age ?? currentage;
+        console.log(result3); //20
+
+        let result4 = currentage ?? age;
+        console.log(result4); //20
+
+
+        //-------------------------------------------------difference between ?? and ||
+        let num1 = 0; 
+        let num2 = 100;
+
+        let result5 = num1 ?? num2;
+        console.log(result5); //0 //Note : 0 is not null or undefined
+
+        let result6 = num1 || num2;
+        console.log(result6); //100
+
+
+    </script>
+</body>
+</html>
